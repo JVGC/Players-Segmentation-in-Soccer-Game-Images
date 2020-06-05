@@ -1,7 +1,6 @@
 # Players-Segmentation-in-Soccer-Game-Images
 
 # Students
-# 
 João Victor Garcia Coelho - 10349540
 
 Paulo André de Oliveira Carneiro - 10295304
