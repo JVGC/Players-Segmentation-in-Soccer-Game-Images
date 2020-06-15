@@ -17,7 +17,7 @@ Write the Goal Here
   - We do that by using Line Detection algorithms such as Hough Transform to identify the top and bottom line of the field. All the pixels below the top line is considered field area. Here we used an Edged Detection Algorithm known as Canny, and then we used a Morphological Operation, known as Dilation on the edges founded, before we used this final image to detect the lines.
   - For sidelines, we don't know yet, because in the images, most sidelines are not vertical, and we have other lines found on the field that can be detect by the algorithm. 
   
-  **Next Steps:** The Next steps are going to be the extraction of the players in the image, differentiating it from the field, and then differentiate each team between the players, and also, differentiate it from the differentiate.
+  **Next Steps:** The next steps are going to be the extraction of the players in the image, differentiating it from the field, the referee, and the players from each team.
   
   Here we plan to use other image segmentation algorithms, morphological operations, color analysis, and maybe the information of the jersey color.
 
