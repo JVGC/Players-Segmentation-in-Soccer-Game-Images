@@ -33,7 +33,7 @@ soccer scenarios.
 
 # **First Results**
 
-The First Results Code can be encountered in [Field Line Detection](https://github.com/JVGC/Players-Segmentation-in-Soccer-Game-Images/blob/master/SideLine%20Detection.ipynb).
+The First Results Code can be encountered in [Field Line Detection](/Field%20Line%20Detection.ipynb).
 
 ## **Original Image**
 
