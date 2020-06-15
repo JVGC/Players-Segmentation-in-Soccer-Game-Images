@@ -6,9 +6,14 @@ João Victor Garcia Coelho - 10349540
 Paulo André de Oliveira Carneiro - 10295304
 
 # **Abstract**
-This project aims to develop and algorithm to separate players from the background and the crowd. We'll use Image Segmentation Methods for this.
+This project aims to develop and algorithm to separate players from the background and the crowd and subsequently draw the offside line. We'll use Image Segmentation Methods for this.
 # **Goal**
-Write the Goal Here
+
+Our main goal with this work is to be able to draw the offside lines. To achieve this goal, we opted to work on screenshoots of FIFA game matches, due to the ease of acquiring these images and the image quality itself. To achieve this goal we will use several image processing techniques, such as edge detecting approach along with a hought transformation to separate the field from other elements such as the crowd.
+
+## **Inputs**:
+
+As mentioned above, as input our algorithm expect screenshoots from FIFA game matches. The screenshoot must have the perspective from above.
 
 ## **Steps**:
 
@@ -42,3 +47,5 @@ The First Results Code can be encountered in [Field Line Detection](/Field%20Lin
 ## **Line Detected Image**
 
 ![Line Detected Image](/images/topCrowd1-LineDetected.jpg)
+
+As we can see in the image above, we were able to remove the non-field elements, so on the future, our algorithms will only focus into the elements that are relevant to achiev our main goal, draw the offside line.
