@@ -15,8 +15,8 @@ def detect_players(img):
     upper_green = np.array([70, 255, 255])
 
     #blue range
-    lower_blue = np.array([90,50,50])
-    upper_blue = np.array([140,255,255])
+    lower_blue = np.array([90,10,2])
+    upper_blue = np.array([130,110,255])
 
     #Red range
     lower_red = np.array([0,50,50])
@@ -58,9 +58,9 @@ def detect_players(img):
                 res2 = cv2.cvtColor(res2, cv2.COLOR_BGR2GRAY)
                 nzCountRed = cv2.countNonZero(res2)
 
-                if nzCountBlue >= 100:
+                if nzCountBlue >= 15:
                     cv2.rectangle(output_img, (x, y), (x + w, y + h), (255, 0, 0), 3)
-                elif nzCountRed >= 100:
+                elif nzCountRed >= 15:
                     cv2.rectangle(output_img, (x, y), (x + w, y + h), (0, 0, 255), 2)
 
     return output_img

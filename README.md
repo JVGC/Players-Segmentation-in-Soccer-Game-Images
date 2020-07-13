@@ -84,3 +84,10 @@ This Results can be found in the following notebook:
 pip install -r requirements.txt
 python3 scripts/main.py --filename='path to your image or video' --type='image or video'
 ```
+## **Presentation**
+
+The presentation of the project can be found on this youtube video:
+(https://www.youtube.com/watch?v=GpMGg2K358A)
+
+## **References** 
+[Vision Based Dynamic Offside Line Marker for Soccer Games](https://arxiv.org/abs/1804.06438)
