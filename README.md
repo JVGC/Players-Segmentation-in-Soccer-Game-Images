@@ -1,51 +1,86 @@
 # Players-Segmentation-in-Soccer-Game-Images
 
+  
+
 # **Students**
+
 João Victor Garcia Coelho - 10349540
 
 Paulo André de Oliveira Carneiro - 10295304
 
+In this project, we used to code together while we were in call via Google Meets. Therefore, both students worked and perfomed all the roles together.
+
+  
+
 # **Abstract**
-This project aims to develop and algorithm to separate players from the background and the crowd and subsequently draw the offside line. We'll use Image Segmentation Methods for this.
+
+This project aims to develop and algorithm to separate players from the background and the crowd and subsequently differentiate players from each team.
+
 # **Goal**
 
-Our main goal with this work is to be able to draw the offside lines. To achieve this goal, we opted to work on screenshoots of FIFA game matches, due to the ease of acquiring these images and the image quality itself. To achieve this goal we will use several image processing techniques, such as edge detecting approach along with a hought transformation to separate the field from other elements such as the crowd.
+  
+
+Our main goal with this work is to be able to detect the players in the field. To achieve this goal, we opted to work on screenshoots of FIFA game matches, due to the ease of acquiring these images and the image quality itself. To achieve this goal we will use several image processing techniques, such as color similarity extractor, morphological operations, thresholding techniques, contour finding, and others.
 
 ## **Inputs**:
 
-As mentioned above, as input our algorithm expect screenshoots from FIFA game matches. The screenshoot must have the perspective from above.
+  
+As mentioned above, as input our algorithm expect screenshoots from FIFA20 game matches. The screenshoot must have the perspective from above.
+
+  ![](./images/input-Image.jpg)
+
+## **Outputs**:
+
+![](./images/result.jpg)
 
 ## **Steps**:
 
-**First Step:** The first step is to extract the field area, so we can then differentiate players and other people from outside the field, such as coaches, reserve players, human-sideline referees, etc. 
-   
-  - We do that by using Line Detection algorithms such as Hough Transform to identify the top and bottom line of the field. All the pixels below the top line is considered field area. Here we used an Edged Detection Algorithm known as Canny, and then we used a Morphological Operation, known as Dilation on the edges founded, before we used this final image to detect the lines.
-  - For sidelines, we don't know yet, because in the images, most sidelines are not vertical, and we have other lines found on the field that can be detect by the algorithm. 
-  
-  **Next Steps:** The next steps are going to be the extraction of the players in the image, differentiating it from the field, the referee, and the players from each team.
-  
-  Here we plan to use other image segmentation algorithms, morphological operations, color analysis, and maybe the information of the jersey color.
+ 
+**1.** The first step is to apply color similarity extraction to identify the field, so we can then differentiate players from it.
+* First we define a mask based on the green color range. Then, we applied this mask on the image using a Bitwise AND Operation, so we can identify/separate what is a green pixel (field) and what is not.
 
+**2.** The second step is to use Thresholding Techniques and Morphological Operations to denoise the image and enhance the image quality. 
+* For the thresholding part, we used two techniques combined: Otsu Thresholding and Binary Thresholding.
+* On the morphological part, we used a Closing followed by Opening operation.
 
-# **Image Examples**
-In this project we're going to use the FIFA game-play images, that provides fair approximation in simulating real-life
-soccer scenarios.
-
-![](https://s2.glbimg.com/0qhFV7_YAiJL05DYVP-X0znwRRg=/0x0:1920x1080/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2018/R/v/ixxop1RH2w2001JJVZIA/44733971-2029113327151462-4091348630277980160-o.jpg)
-
-![](/images/topCrowd5.jpg)
-
+**3.** The third and last step is to use the Countour Finding Method to detect objects in the image. For each contour found, we apply a new mask based on the color of the team's jerseys, so then we can identify the team of each player.
 
 # **First Results**
 
 The First Results Code can be encountered in [Field Line Detection](/Field%20Line%20Detection.ipynb).
+ 
+ This was our first approach to remove the non-field elements, but later on we found another method that does the same thing but more precisely.
+ 
+ On this notebook, we used an edge detecting approach along with a hough transform to separate the field from other elements such as the crowd.
+  
 
 ## **Original Image**
 
-![Original Image](/images/topCrowd1.jpg)
+![Original Image](images/fifa-2019.jpg)
+
 
 ## **Line Detected Image**
 
-![Line Detected Image](/images/topCrowd1-LineDetected.jpg)
+![Line Detected Image](images/result-LineDetected.jpg)
 
-As we can see in the image above, we were able to remove the non-field elements, so on the future, our algorithms will only focus into the elements that are relevant to achiev our main goal, draw the offside line.
+As we can see in the image above, we were able to remove the non-field elements.
+
+## **Final Results**
+
+After applying the method described earlier, we were able to detect most of the players in the images tested. But there are some considerations and failures on our attempts.
+
+* 	The algorithm depends mainly on the color range of the shirts to execute properly. So, choosing a range for their color is essential to detecting the players.
+* We had a lot of difficulty in finding a good range for the tested images because it is very difficult to choose a range for colors in HSV, specifically in the HSV model of OpenCV which has a different range than the normal HSV.
+* In addition, the size of the image also interferes with the result, because as we count the pixels that matched that given color, larger images (with more pixels) can give different results than smaller images.
+
+
+This Results can be found in the following notebook:
+
+[Players Detection](/notebooks/Players%20Detection.ipynb)
+
+## **Running Demo**
+
+```bash
+pip install -r requirements.txt
+python3 scripts/main.py --filename='path to your image or video' --type='image or video'
+```
